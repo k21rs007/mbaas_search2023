@@ -55,6 +55,14 @@
       msg += "</table>";
       $("#message").html(msg);
     }
+     function searchLevelLT() {
+      let level = parseInt($("#level").val());
+      let TestDataClass = ncmb.DataStore(db);
+      TestDataClass.lessThan("level",level).fetchAll()
+        .then(function(results) {
+          showResults(results);
+        })
+    }
   </script>
 </head>
 
@@ -73,6 +81,7 @@
     <button class="btn" onclick="searchName()">Name</button><br>
     <button class="btn" onclick="searchLevelLT()">Level &lt;</button>
     <button class="btn" onclick="searchLevel()">Level</button>
+    <button class="btn" onclick="searchLevelGT()">Level &gt;</button>
   </div>
   <div id="message">message area</div>
 </body>
